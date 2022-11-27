@@ -23,7 +23,8 @@ class Club(models.Model):
     coach = models.ForeignKey(Person, on_delete=models.CASCADE)
     dorm_latitude = models.DecimalField(max_digits=22, decimal_places=16, null=True, blank=True)
     dorm_longtitude = models.DecimalField(max_digits=22, decimal_places=16, null=True, blank=True)
-
+    team_pic = models.ImageField(default="defaultimg.png", null=True, blank=True, verbose_name="Team Image")
+    
     def __str__(self):
         return self.name
 
