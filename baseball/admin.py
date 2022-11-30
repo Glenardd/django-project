@@ -1,24 +1,26 @@
 from django.contrib import admin
 from django.contrib.admin import display
-from .models import Position, Person, Club, Play
+from .models import Position, Person, Club, Play, Match
 
-# Register your models here.
 @admin.register(Position)
-class PositionAdmin(admin.ModelAdmin):  
+class PositionAdmin(admin.ModelAdmin):
     list_display = ("description",)
     search_fields = ("description",)
 
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ("lastname","firstname","height","weight","birthdate")
-    search_fields = ("lastname","firstname","height","weight","birthdate")
+    list_display = ("lastname","firstname","height","weight")
+    search_fields = ("lastname",)
 
 @admin.register(Club)
-class Clubadmin(admin.ModelAdmin):
-    list_display = ("name", "coach", "dorm_latitude", "dorm_longtitude")
-    search_fields = ("name", "coach", "dorm_latitude", "dorm_longtitude")
+class ClubAdmin(admin.ModelAdmin):
+    list_display = ("name","coach",)
+    search_fields = ("name",)
 
 @admin.register(Play)
-class Playadmin(admin.ModelAdmin):
-    list_display = ("player", "team", "string_no", "pos", "isActive")
-    search_fields = ("player", "team", "string_no", "pos", "isActive")
+class PlayAdmin(admin.ModelAdmin):
+    list_display = ("player","team","string_no","isActive",)
+
+@admin.register(Match)
+class MatchAdmin(admin.ModelAdmin):
+    list_display = ("team1","score_t1","team2","score_t2","winner",)

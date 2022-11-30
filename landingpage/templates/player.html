@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <p>
+      Example inner page template, player
+    </p>
+
+    <div class="row">
+        <ul class="list-unstyled">
+            {% for object in object_list %}
+            <li class="media">
+                <img class="mr-3" src="..." alt="Generic placeholder image">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">{{object.player.firstname}}Player Name</h5>
+                    {{object.team.name}}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock content %}
