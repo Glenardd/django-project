@@ -1,7 +1,7 @@
 """projectsite URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -15,13 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings #add this
+from django.conf.urls.static import static #add this
 
-from baseball.views import HomePageView, ClubView, PlayView
+from baseball.views import HomePageView, ClubView, PlayerView, MatchView
 from baseball import views
 
-urlpatterns = [ 
+urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.HomePageView.as_view(), name='home'),
     path('club/',views.ClubView.as_view(), name='club'),
-    path('player/',views.PlayView.as_view(), name='player'),
-]
+    path('player/',views.PlayerView.as_view(), name='player'),
+    path('match/',views.MatchView.as_view(), name='match'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

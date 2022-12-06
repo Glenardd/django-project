@@ -4,21 +4,40 @@
 {% block content %}
 <div class="container">
     <p>
-      Example inner page template, player
+      {{ header_text }}
     </p>
 
     <div class="row">
-        <ul class="list-unstyled">
-            {% for object in object_list %}
-            <li class="media">
-                <img class="mr-3" src="..." alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">{{object.player.firstname}}Player Name</h5>
-                    {{object.team.name}}
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
+        
+        <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Team/Club</th>
+                <th scope="col">Position</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for object in object_list %}
+              <tr>
+                <th scope="row">{{ object.player.firstname }} {{ object.player.lastname }}</th>
+                <td>{{ object.team.name }}</td>
+                <td>{{ object.pos.description }}</td>
+                <td>{% if object.isActive == True %} Active {% else %} Inactive {% endif %}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+       
+          {% include 'includes/pagination.html' %}
+          
+           
+            
+            
+            
+       
     </div>
-</div>
+  </div>
+
 {% endblock content %}

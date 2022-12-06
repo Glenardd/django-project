@@ -4,21 +4,23 @@
 {% block content %}
 <div class="container">
     <p>
-      Example inner page template, club
+      {{ header_text }}
     </p>
 
     <div class="row">
         <ul class="list-unstyled">
             {% for object in object_list %}
             <li class="media">
-                <img class="mr-3" src="..." alt="Generic placeholder image">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">{{object.name}}Team Name</h5>
-                    {{object.description}}
-                </div>
+              <img class="mr-3" src="../media/img/{{object.team_pic}}" height="100px" alt="Generic placeholder image">
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">{{object.name}}</h5>
+                {{object.description}}
+              </div>
             </li>
+            <br>
             {% endfor %}
-        </ul>
+          </ul>
     </div>
-</div>
+  </div>
+
 {% endblock content %}
